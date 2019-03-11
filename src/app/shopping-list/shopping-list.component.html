@@ -1,0 +1,84 @@
+
+<div class="row">
+  <div class="col-xs-10">
+    <app-shopping-edit (ingredientAdded)="onIngredientAdded($event)"></app-shopping-edit>
+    <hr>
+
+    <!-- Mark as Important  -->
+    <!-- To improve in next version -->
+    <!-- Mark item as import when user clicks on star  -->
+    <!-- Use [ngClass] -->
+    <ul class="list-group col-xs-1"> 
+      <button 
+        (click)="onClick(i)"
+        *ngFor="let ingredient of ingredients; let i = index"
+        class="list-group-item fas fa-star btn-sample">
+    </button>
+    </ul>
+
+    
+
+    <!-- Name of item to buy  -->
+    <ul class="list-group col-xs-2">
+      <a
+        class="list-group-item ingredientName"      
+        *ngFor="let ingredient of ingredients"
+      >{{ ingredient.name }}
+      </a>
+    </ul>
+
+    <!-- Amount of item to buy  -->
+    <ul class="list-group col-xs-1">
+      <a
+        (click)="addAmount()"
+        class="list-group-item ingredientAmount"
+        *ngFor="let ingredient of ingredients"
+      >{{ ingredient.amount }}
+      </a>
+    </ul>
+
+    
+   
+    <!-- Delete Item  -->
+    <ul class="list-group col-xs-2">
+      <a 
+        class="list-group-item far fa-trash-alt btn-sample"
+        (click)="onIngredientDeleted(i)"
+        *ngFor="let ingredient of ingredients; let i = index">
+      </a>
+    </ul>
+
+    <!-- Move-Up Item  -->
+    
+    <ul class="list-group col-xs-2">
+      <a 
+        (click)="onIngredientMoveUp(i)"
+        *ngFor="let ingredient of ingredients; let i = index"
+        class ="list-group-item fas fa-chevron-circle-up btn-sample" >
+      </a>
+    </ul>
+
+    <!-- Move-Down Item  -->
+    <!-- To improve in next version -->
+    <!-- Do not display last arrow  -->
+    <!-- Use [ngClass] -->
+      <ul class="list-group col-xs-2">
+        <a 
+          (click)="onIngredientMoveDown(i)"
+          *ngFor="let ingredient of ingredients; let i = index"
+          class ="list-group-item fas fa-chevron-circle-down btn-sample">
+        </a>
+      </ul>
+    </div>
+
+  <!-- Button delete shopping list -->
+  <div class="col-xs-10">
+    <ul class="list-group col-xs-2">
+      <button 
+        class="btn btn-danger deletebtn"
+        (click)="onShoppingListDeleted()">Delete shopping list
+      </button>
+    </ul>
+  </div>
+</div>
+
